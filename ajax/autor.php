@@ -18,6 +18,7 @@ switch ($_GET["op"]){
 			echo $rspta ? "Autor actualizado" : "Autor no se pudo actualizar";
 		}
 	break;
+        
 
 	case 'desactivar':
 		$rspta=$autor->desactivar($id);
@@ -30,9 +31,22 @@ switch ($_GET["op"]){
  		echo $rspta ? "Autor activado" : "Categoría no se puede activar";
  		break;
 	break;
+    
+    case 'eliminar':
+		$rspta=$autor->eliminar($id);
+// 		echo $rspta ? "Autor eliminado" : "El autor no se puede eliminar pues tiene libros asociados a el";
+ 		break;
+	break;
 
 	case 'mostrar':
 		$rspta=$autor->mostrar($id);
+ 		//Codificar el resultado utilizando json
+ 		echo json_encode($rspta);
+ 		break;
+	break;
+    
+    case 'verificar':
+		$rspta=$autor->verificar($id);
  		//Codificar el resultado utilizando json
  		echo json_encode($rspta);
  		break;
@@ -45,17 +59,16 @@ switch ($_GET["op"]){
 
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(
- 				"0"=>($reg->est_aut=="A")?'<button class="btn btn-warning" onclick="mostrar('.$reg->id_aut.')"><i class="fa fa-pencil"></i></button>'.
- 					' <button class="btn btn-danger" onclick="desactivar('.$reg->id_aut.')"><i class="fa fa-close"></i></button>':
-                                        
-                            
-                            
- 					'<button class="btn btn-warning" onclick="mostrar('.$reg->id_aut.')"><i class="fa fa-pencil"></i></button>'.
- 					' <button class="btn btn-primary" onclick="activar('.$reg->id_aut.')"><i class="fa fa-check"></i></button>',
+ 				"0"=>($reg->est_aut=="A")?'<button class="btn btn-primary" onclick="mostrar('.$reg->id_aut.')"><i class="fa fa-pencil" title="Editar"></i></button>'.
+ 					' <button class="btn btn-success" onclick="desactivar('.$reg->id_aut.')"><i class="fa fa-toggle-on" title="Desactivar"></i></button>'.
+                                        ' <button class="btn btn-danger" onclick="verificar('.$reg->id_aut.')"><i class="fa fa-close" title="Eliminar"></i></button>':
+ 					'<button class="btn btn-primary" onclick="mostrar('.$reg->id_aut.')"><i class="fa fa-pencil" title="Editar"></i></button>'.
+ 					' <button class="btn btn-warning" onclick="activar('.$reg->id_aut.')"><i class="fa fa-toggle-off" title="Activar"></i></button>'.
+                                        ' <button class="btn btn-danger" onclick="verificar('.$reg->id_aut.')"><i class="fa fa-close" title="Eliminar"></i></button>',
  				"1"=>$reg->nom_aut,
  				"2"=>$reg->des_aut,
  				"3"=>($reg->est_aut=="A")?'<span class="label bg-green">Activado</span>':
- 				'<span class="label bg-red">Desactivado</span>'
+ 				'<span class="label bg-yellow">Desactivado</span>'
  				);
  		}
  		$results = array(
@@ -66,5 +79,6 @@ switch ($_GET["op"]){
  		echo json_encode($results);
 
 	break;
+        
 }
 ?>

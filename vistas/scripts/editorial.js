@@ -14,7 +14,7 @@ function init(){
 //Función limpiar
 function limpiar()
 {
-	$("#nombre").val("");
+//	$("#nombre").val("");
 	$("#descripcion").val("");
 	$("#id").val("");
 }
@@ -50,7 +50,7 @@ function listar()
 {
 	tabla=$('#tbllistado').dataTable(
 	{
-		"aProcessing": true,//Activamos el procesamiento del datatables
+	    "aProcessing": true,//Activamos el procesamiento del datatables
 	    "aServerSide": true,//Paginación y filtrado realizados por el servidor
 	    dom: 'Bfrtip',//Definimos los elementos del control de tabla
 	    buttons: [		          
@@ -61,7 +61,7 @@ function listar()
 		        ],
 		"ajax":
 				{
-					url: '../ajax/autor.php?op=listar',
+					url: '../ajax/editorial.php?op=listar',
 					type : "get",
 					dataType : "json",						
 					error: function(e){
@@ -78,11 +78,11 @@ function listar()
 function guardaryeditar(e)
 {
 	e.preventDefault(); //No se activará la acción predeterminada del evento
-	$("#btnGuardar").prop("disabled",true);
+	$("#btnAgregar").prop("disabled",true);
 	var formData = new FormData($("#formulario")[0]);
 
 	$.ajax({
-		url: "../ajax/autor.php?op=guardaryeditar",
+		url: "../ajax/editorial.php?op=guardaryeditar",
 	    type: "POST",
 	    data: formData,
 	    contentType: false,
@@ -102,7 +102,7 @@ function guardaryeditar(e)
 
 function mostrar(id)
 {
-	$.post("../ajax/autor.php?op=mostrar",{id : id}, function(data, status)
+	$.post("../ajax/editorial.php?op=mostrar",{id : id}, function(data, status)
 	{
 		
 		data = JSON.parse(data);		
@@ -110,11 +110,12 @@ function mostrar(id)
 
 //                console.log(data);  
 //                console.log(data.nom_aut);
-                 console.log($("#nombre").val(data.nom_aut));
-                
-		$("#nombre").val(data.nom_aut);
-                $("#descripcion").val(data.des_aut);
-                $("#id").val(data.id_aut);
+                 console.log($("#id").val(data.id_edi));
+                 
+                $("#id").val(data.id_edi);
+		$("#codigo").val(data.nom_edi);
+                $("#descripcion").val(data.des_edi);
+              
 
  	})
 }
@@ -125,7 +126,7 @@ function desactivar(id)
 	bootbox.confirm("¿Está Seguro de desactivar la Categoría?", function(result){
 		if(result)
         {
-        	$.post("../ajax/autor.php?op=desactivar", {id : id}, function(e){
+        	$.post("../ajax/editorial.php?op=desactivar", {id : id}, function(e){
         		bootbox.alert(e);
 	            tabla.ajax.reload();
         	})	
@@ -139,7 +140,7 @@ function activar(id)
 	bootbox.confirm("¿Está Seguro de activar la Categoría?", function(result){
 		if(result)
         {
-        	$.post("../ajax/autor.php?op=activar", {id : id}, function(e){
+        	$.post("../ajax/editorial.php?op=activar", {id : id}, function(e){
         		bootbox.alert(e);
 	            tabla.ajax.reload();
         	})	
@@ -147,32 +148,11 @@ function activar(id)
 	})
 }
 
-function verificar(id)
-{
-   
-    
-    
-$.post("../ajax/autor.php?op=verificar",{id : id}, function(data, status)
-	{
-		 data = JSON.parse(data);
-			
-	if(data.titulos>0){
-            
-            bootbox.alert("El autor tiene libros asociados, por lo cual no se puede eliminar");
-            
-        }else{
-            bootbox.confirm("¿Está Seguro de eliminar definitivamente  este  autor?", function(result){
-		if(result)
-        {
-        	$.post("../ajax/autor.php?op=eliminar", {id : id}, function(e){
+function eliminar(id){
+    $.post("../ajax/editorial.php?op=eliminar", {id : id}, function(e){
         		bootbox.alert("Autor eliminado exitosamente");
 	            tabla.ajax.reload();
         	});	
-        }
-	})
-        }
-                
- 	})   
 }
 
 

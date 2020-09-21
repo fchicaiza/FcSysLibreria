@@ -2,7 +2,7 @@
 //Incluímos inicialmente la conexión a la base de datos
 require "../config/conexion.php";
 
-Class Autor
+Class Editorial
 {
 	//Implementamos nuestro constructor
 	public function __construct()
@@ -11,55 +11,54 @@ Class Autor
 	}
 
 	//Implementamos un método para insertar registros
-	public function insertar($nombre,$descripcion)
+	public function insertar($descripcion)
 	{
-		$sql="INSERT INTO fc_tbl_autor (nom_aut, des_aut, est_aut)
-		VALUES ('$nombre','$descripcion','A')";
+		$sql="INSERT INTO fc_tbl_editorial (des_edi, est_edi)
+		VALUES ('$descripcion','A')";
 		return ejecutarConsulta($sql);
 	}
 
 	//Implementamos un método para editar registros
-	public function editar($id,$nombre,$descripcion)
+	public function editar($id,$descripcion)
 	{
-		$sql="UPDATE fc_tbl_autor SET nom_aut='$nombre',des_aut='$descripcion' WHERE id_aut='$id'";
+		$sql="UPDATE fc_tbl_editorial SET des_edi='$descripcion' WHERE id_edi='$id'";
 		return ejecutarConsulta($sql);
 	}
 
 	//Implementamos un método para desactivar categorías
 	public function desactivar($id)
 	{
-		$sql="UPDATE fc_tbl_autor SET est_aut='I' WHERE id_aut='$id'";
+		$sql="UPDATE fc_tbl_editorial SET est_edi='I' WHERE id_edi='$id'";
 		return ejecutarConsulta($sql);
 	}
 
 	//Implementamos un método para activar categorías
 	public function activar($id)
 	{
-		$sql="UPDATE fc_tbl_autor SET est_aut='A' WHERE id_aut='$id'";
+		$sql="UPDATE fc_tbl_editorial SET est_edi='A' WHERE id_edi='$id'";
 		return ejecutarConsulta($sql);
 	}
 
 	//Implementar un método para mostrar los datos de un registro a modificar
 	public function mostrar($id)
 	{
-		$sql="SELECT * FROM fc_tbl_autor WHERE id_aut='$id'";
+		$sql="SELECT * FROM fc_tbl_editorial WHERE id_edi='$id'";
 		return ejecutarConsultaSimpleFila($sql);
 	}
 
 	//Implementar un método para listar los registros
 	public function listar()
 	{
-		$sql="SELECT * FROM fc_tbl_autor";
+		$sql="SELECT * FROM fc_tbl_editorial";
 		return ejecutarConsulta($sql);		
 	}
-        public function verificar($id){
-            $sql="select count(tit_lib) as titulos from fc_tbl_libro where id_aut_lib='$id'";
-           return ejecutarConsultaSimpleFila($sql);	
-        }
+      
         public function eliminar($id){
-          		$sql="DELETE FROM fc_tbl_autor WHERE id_aut='$id'";
+          		$sql="DELETE FROM fc_tbl_editorial WHERE id_edi='$id'";
 		return ejecutarConsultaSimpleFila($sql);  
         }
+        
+        
 }
 
 ?>
