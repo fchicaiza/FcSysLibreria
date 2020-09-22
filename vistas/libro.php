@@ -43,7 +43,7 @@ require 'header.php';
                           </tfoot>
                         </table>
                     </div>
-<!--                    <div class="panel-body" style="height: 400px;" id="formularioregistros">
+                    <div class="panel-body" style="height: 400px;" id="formularioregistros">
                         <form name="formulario" id="formulario" method="POST">
            
                             <input type="hidden" class="form-control" name="id" id="id" maxlength="50" readonly="readonly" required>
@@ -101,7 +101,7 @@ require 'header.php';
                             <button class="btn btn-danger" onclick="cancelarform()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
                           </div>
                         </form>
-                    </div>-->
+                    </div>
                     <!--Fin centro -->
                   </div><!-- /.box -->
               </div><!-- /.col -->
@@ -116,8 +116,3 @@ require 'footer.php';
   
   <script type="text/javascript" src="scripts/libro.js"></script>
  
-  <script>
-  $(document).ready(function(){
-      $('#tabaut').load('tablaautores.php');
-  })
-  </script>

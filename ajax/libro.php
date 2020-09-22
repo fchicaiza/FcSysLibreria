@@ -12,12 +12,15 @@ $cantidad=isset($_POST["cantidad"])? limpiarCadena($_POST["cantidad"]):"";
 $precio=isset($_POST["precio"])? limpiarCadena($_POST["precio"]):"";
 $categoria=isset($_POST["categoria"])? limpiarCadena($_POST["categoria"]):"";
 $editorial=isset($_POST["editorial"])? limpiarCadena($_POST["editorial"]):"";
+$tipo=isset($_POST["tipo"])? limpiarCadena($_POST["tipo"]):"";
+$autor=isset($_POST["autor"])? limpiarCadena($_POST["autor"]):"";
 
 switch ($_GET["op"]){
 	case 'guardaryeditar':
 		if (empty($id)){
-			$rspta=$libro->insertar($isbn,$titulo,$publicacion,$edicion,$cantidad,$precio,$categoria,$editorial);
-			echo $rspta ? "Libro registrado" : "Libro no se pudo registrar";
+			$rspta=$libro->insertar($isbn,$titulo,$publicacion,$edicion,$cantidad,$precio,$categoria,$editorial,$tipo,$autor);
+                        
+			echo $rspta ? "Libro registrado correctamente, si lo requiere agregue mas autores" : "Libro no se pudo registrar";
 		}
 		else {
 			$rspta=$libro->editar($id,$descripcion);

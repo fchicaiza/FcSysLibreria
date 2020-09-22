@@ -42,5 +42,7 @@ if (!function_exists('ejecutarConsulta'))
 		$str = mysqli_real_escape_string($conexion,trim($str));
 		return htmlspecialchars($str);
 	}
+        
+        
 }
 ?>

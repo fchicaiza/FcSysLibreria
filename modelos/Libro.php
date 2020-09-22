@@ -15,17 +15,11 @@ class Libro {
 	}
 
 	//Implementamos un método para insertar registros
-	public function insertar($isbn,$titulo,$publicacion,$edicion,$cantidad, $precio,$categoria, $editorial)
+	public function insertar($isbn,$titulo,$publicacion,$edicion,$cantidad, $precio,$categoria, $editorial,$autor,$tipo)
 	{
-		$sql="INSERT INTO fc_tbl_libro (isb_lib, tit_lib, apu_lib, edc_lib, can_lib, pre_lib, est_lib, id_cat_lib, cod_edi_lib)
-		VALUES ('$isbn','$titulo','$publicacion','$edicion','$cantidad','$precio','A','$categoria','$editorial')";
-		return ejecutarConsulta($sql);
-                
-//                $idLib= mysqli_insert_id(ejecutarConsulta($sql));
-//                
-//                $sql="INSERT INTO fc_tbl_autor_libro(id_aut_aul, id_lib_aul, id_tau_aul, est_aul) VALUES ('','$idLib','','A')" ;
-//                return ejecutarConsulta($sql);
-                
+              	$sql=" CALL sp_insertarLibro ($isbn,'$titulo','$publicacion',$edicion,$cantidad,$precio,'A',$categoria,'$editorial',$tipo, $autor,'A')" ;
+                return ejecutarConsulta($sql);   
+
 	}
 
 	//Implementamos un método para editar registros
@@ -72,7 +66,7 @@ class Libro {
 		return ejecutarConsultaSimpleFila($sql);  
         }
     
-        public function listarTodo($id){
-            
+        public function agregarAutor($id){
+           
         }
 }

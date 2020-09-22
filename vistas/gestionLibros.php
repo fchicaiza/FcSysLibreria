@@ -10,15 +10,15 @@
                   <div class="box">
                     <div class="box-header with-border">
                           
-                        <h1 class="box-title">Añadir Datos del Libro</h1>
+                        <h1 class="box-title">Libros</h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
                     <!-- /.box-header -->
                     <!-- centro -->
 
-                    <div class="panel-body" style="height: 600px;" id="">
-                        <form name="formulario" id="formulario" method="POST">
+                    <div class="panel-body" style="height: 700px;" id="formregistros">
+                        <form name="form" id="form" method="POST">
 
                             <input type="hidden" class="form-control" name="id" id="id" maxlength="50" readonly="readonly" required>
                       
@@ -65,46 +65,33 @@
                               <option></option>
                           </div>
                             
-                          <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <button class="btn btn-success" type="submit" id="btnGuardar"><i class="fa fa-check"></i> Agregar</button>
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                              <label>Autor </label>
+                              <select class="form-control"  name="autor"  id="autor"></select>
+                              <option></option>
+                          </div>
+                            
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                              <label>Tipo de autor</label>
+                              <select class="form-control"  name="tipo"  id="tipo"></select>
+                              <option></option>
+                          </div>
+                                               <button class="btn btn-success" type="submit"  id="btnGuardar"><i class="fa fa-check"></i> Agregar</button>
+                   <button class="btn btn-danger" onclick="cancelarform()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
+       
+                          </div>                         
+                        </form>                           
+                        </div>
+                 <div  id="listaregistros" class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                          </div>
-                            
-                                                        
-                            <br>
-                              <h4 class="box-title">Asignar Autor </h4>   
-                               <br>
-                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Libro:</label>
-                            <input type="number" class="form-control" name="precio" id="precio" maxlength="256" placeholder="Precio">
-                          </div>
-                               
-                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Precio:</label>
-                            <input type="number" class="form-control" name="precio" id="precio" maxlength="256" placeholder="Precio">
-                          </div>
-                               
-                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Precio:</label>
-                            <input type="number" class="form-control" name="precio" id="precio" maxlength="256" placeholder="Precio">
-                          </div>
-                            
-                            <br>
-                              <h4 class="box-title">Detalle de libro</h4>   
-                               <br>
-                               
-                           <div class="form-group col-lg-12 col-md-6 col-sm-6 col-xs-12">
-<!--                              <label>Autor Principal</label>-->
-<!--                              <select class="form-control " name="autor"id="autor"></select>-->
                               <div class="Container">
+                                  <div class="row">
+                                      
+                                
                                    <div id="tabaut"> </div>
                               </div>
-<!--                         <button class="btn btn-primary" type="submit" id="btnAgregar"><i class="fa fa-save"></i> Guardar</button>      -->
-                   <button class="btn btn-danger" onclick="cancelarform()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
-
+                           </div>
                           </div>
-                            
-                        </form>
                     </div>
                     <!--Fin centro -->
                   </div><!-- /.box -->
