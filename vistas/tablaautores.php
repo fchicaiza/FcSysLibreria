@@ -1,7 +1,8 @@
-
+<!-- Conexion independiente para consultas asincronas de Jqueryy-->
 <?php
 $conexion = mysqli_connect("localhost", "root", "admin", "fc_bdd_libreria");
 ?>
+
 
 
 <div class="container">
@@ -50,7 +51,11 @@ FROM
 			Where id_lib = (SELECT MAX(id_lib)  FROM fc_tbl_libro);";
                 $result = mysqli_query($conexion, $sql);
                 while ($mostrar = mysqli_fetch_array($result)) {
+                    
+                    
+                    
                     ?> 
+                <input type="hidden" id="ide" value="<?php echo $mostrar['id_lib']?>"  >
                     <tr>
                         <td><?php echo $mostrar ['tit_lib'] ?> </td>
                         <td> <?php echo $mostrar ['nom_aut'] ?></td>
@@ -60,6 +65,7 @@ FROM
                     </tr>
 
                     <?php
+                    
                 }
                 ?>
                     <tr>
@@ -68,7 +74,7 @@ FROM
 
 
     <div class="col-sm-5">
-        <select class="form-control" name="">
+        <select class="form-control" name="naut" id="naut">
             <option>Seleccionar Autor</option>
             <?php
             $consulta = "SELECT * FROM fc_tbl_autor";
@@ -84,7 +90,7 @@ FROM
     </div>
 
     <div class="col-sm-5">
-        <select class="form-control" name="">
+        <select class="form-control" name="taut" id="taut">
             <option>Seleccionar el tipo de autor</option>
             <?php
             $consulta1 = "SELECT * FROM fc_tbl_tipoautor";
@@ -102,12 +108,12 @@ FROM
 
     <div class="col-sm-1">
 
-        <button class="btn btn-success fa fa-plus"  id="btnAdd" ></button>
+        <button class="btn btn-success fa fa-plus" id="btnAdd" onclick="getData()" ></button>
     </div>
                                
      <div class="col-sm-1">
 
-        <button class="btn btn-primary fa fa-check"  id="btnAdd" ></button>
+         <a class="btn btn-warning fa fa-check"  href="../vistas/libro.php" ></a>
     </div>
 
 </div> 
@@ -122,12 +128,11 @@ FROM
 </div>
 
 
-
-
+<script src="scripts/insertData.js" type="text/javascript"></script>
+<script src="scripts/libroData.js" type="text/javascript"></script> 
 
 <script>
-
-    $(document).ready(function () {
+$(document).ready(function () {
 
         $('#btnGuardar').click(function () {
             $('#divtabla').load('tablaautores.php');

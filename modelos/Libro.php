@@ -66,7 +66,8 @@ class Libro {
 		return ejecutarConsultaSimpleFila($sql);  
         }
     
-        public function agregarAutor($id){
-           
+        public function listara(){
+           $sql="call sp_ListaInsertados()";
+           return ejecutarConsulta($sql);
         }
 }
