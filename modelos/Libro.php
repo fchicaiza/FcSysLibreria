@@ -68,9 +68,6 @@ SET  fc_tbl_libro.isb_lib = $isbn,
             return ejecutarConsultaSimpleFila($sql);
 	}
         
-        public function mostrarAutores($param) {
-            
-        }
 
 	//Implementar un método para listar los registros
 	public function listar()
@@ -78,7 +75,9 @@ SET  fc_tbl_libro.isb_lib = $isbn,
 		$sql="SELECT * FROM fc_tbl_libro";
 		return ejecutarConsulta($sql);		
 	}
-      
+        
+        
+      // Implementamos un metodo para eliminar
         public function eliminar($id){
           		$sql="DELETE FROM fc_tbl_libro WHERE id_lib='$id'";
 		return ejecutarConsultaSimpleFila($sql);  

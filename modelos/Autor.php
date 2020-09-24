@@ -52,8 +52,11 @@ Class Autor
 		$sql="SELECT * FROM fc_tbl_autor";
 		return ejecutarConsulta($sql);		
 	}
+        
+        // Implementamos un metodo para verificar la existencia de títulos
+        
         public function verificar($id){
-            $sql="select count(tit_lib) as titulos from fc_tbl_libro where id_aut_lib='$id'";
+            $sql="select count(id_lib_aul) as titulos from fc_tbl_autor_libro where id_aut_aul='$id'";
            return ejecutarConsultaSimpleFila($sql);	
         }
         public function eliminar($id){

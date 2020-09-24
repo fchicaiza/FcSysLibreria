@@ -142,20 +142,20 @@ function activar(id)
         	$.post("../ajax/autor.php?op=activar", {id : id}, function(e){
         		bootbox.alert(e);
 	            tabla.ajax.reload();
-        	})	
+        	});	
         }
-	})
+	});
 }
 
 function verificar(id)
 {
-   
-    
-    
+ 
 $.post("../ajax/autor.php?op=verificar",{id : id}, function(data, status)
 	{
 		 data = JSON.parse(data);
 			
+                        console.log(data);
+                        
 	if(data.titulos>0){
             
             bootbox.alert("El autor tiene libros asociados, por lo cual no se puede eliminar");
@@ -169,10 +169,10 @@ $.post("../ajax/autor.php?op=verificar",{id : id}, function(data, status)
 	            tabla.ajax.reload();
         	});	
         }
-	})
+	});
         }
                 
- 	})   
+ 	})  ; 
 }
 
 
