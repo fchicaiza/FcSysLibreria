@@ -23,9 +23,27 @@ class Libro {
 	}
 
 	//Implementamos un método para editar registros
-	public function editar($id,$isbn,$titulo,$anio,$edicion,$cantidad, $precio)
+	public function editar($id, $isbn, $titulo, $anio, $edicion, $cantidad, $precio,$cat,$edi,$aut,$tip)
 	{
-		$sql="UPDATE fc_tbl_libro SET isb_lib='$isbn', tit_lib='$titulo', apu_lib= '$anio',edc_lib='$edicion',can_lib='$cantidad', pre_lib='$precio',   WHERE id_lib='$id'";
+		$sql="UPDATE fc_tbl_libro
+    INNER JOIN fc_tbl_categoria 
+        ON (fc_tbl_libro.id_cat_lib = fc_tbl_categoria.id_cat)
+    INNER JOIN fc_tbl_editorial 
+        ON (fc_tbl_libro.cod_edi_lib = fc_tbl_editorial.cod_edi)
+    INNER JOIN fc_tbl_autor_libro 
+        ON (fc_tbl_autor_libro.id_lib_aul = fc_tbl_libro.id_lib)
+SET  fc_tbl_libro.isb_lib = $isbn,
+     fc_tbl_libro.tit_lib = ' $titulo',
+     fc_tbl_libro.apu_lib = '$anio',
+     fc_tbl_libro.edc_lib = $edicion,
+     fc_tbl_libro.can_lib = $cantidad,
+     fc_tbl_libro.pre_lib = $precio,
+     fc_tbl_libro.id_cat_lib = $cat,
+     fc_tbl_libro.cod_edi_lib = '$edi',
+		 fc_tbl_autor_libro.id_aut_aul = $aut,
+		 fc_tbl_autor_libro.id_tau_aul = $tip
+		 
+		 	WHERE fc_tbl_autor_libro.id_lib_aul = $id;";
 		return ejecutarConsulta($sql);
 	}
 
@@ -46,8 +64,8 @@ class Libro {
 	//Implementar un método para mostrar los datos de un registro a modificar
 	public function mostrar($id)
 	{
-		$sql="SELECT * FROM fc_tbl_libro WHERE id_lib='$id'";
-		return ejecutarConsultaSimpleFila($sql);
+            $sql ="CALL sp_BuscarlibroId($id)";
+            return ejecutarConsultaSimpleFila($sql);
 	}
         
         public function mostrarAutores($param) {
@@ -70,4 +88,9 @@ class Libro {
            $sql="call sp_ListaInsertados()";
            return ejecutarConsulta($sql);
         }
+        
+//        public function mostrarTodo($id){
+//            $sql ="CALL sp_BuscarlibroId($id)";
+//            return ejecutarConsultaSimpleFila($sql);
+//        }
 }

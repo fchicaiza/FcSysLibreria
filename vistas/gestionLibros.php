@@ -1,6 +1,6 @@
             <?php include '../vistas/header.php'; ?>        
 
- !--Contenido-->
+ <!--Contenido-->
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">        
         <!-- Main content -->

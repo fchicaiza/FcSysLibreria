@@ -116,19 +116,24 @@ function mostrar(id)
 //                console.log(data.nom_aut);
                  console.log($("#id").val(data.id_lib));
                  
-                $("#id").val(data.id_lib);
+               $("#id").val(data.id_lib);
 		$("#isbn").val(data.isb_lib);
                 $("#titulo").val(data.tit_lib);
                 $("#publicacion").val(data.apu_lib);
                 $("#edicion").val(data.edc_lib);
                 $("#cantidad").val(data.can_lib);
                 $("#precio").val(data.pre_lib);
-                $("#categoria").val(data.id_cat_lib);
-                $("#editorial").val(data.cod_edi_lib);
+                $("#categoria").val(data.des_cat);
+                $("#editorial").val(data.des_edi);
+                $("#autor").val(data.nom_aut);
+                $("#tipo").val(data.des_tau);
               
-
- 	})
+ 	});
+        
+        
 }
+
+
 
 //Función para desactivar registros
 function desactivar(id)

@@ -15,6 +15,13 @@ $editorial=isset($_POST["editorial"])? limpiarCadena($_POST["editorial"]):"";
 $tipo=isset($_POST["tipo"])? limpiarCadena($_POST["tipo"]):"";
 $autor=isset($_POST["autor"])? limpiarCadena($_POST["autor"]):"";
 
+// Variables para llenar el combo box
+
+$cat=isset($_POST["cat"])? limpiarCadena($_POST["cat"]):"";
+$edi=isset($_POST["edi"])? limpiarCadena($_POST["edi"]):"";
+$aut=isset($_POST["aut"])? limpiarCadena($_POST["aut"]):"";
+$tip=isset($_POST["tip"])? limpiarCadena($_POST["tip"]):"";
+
 switch ($_GET["op"]){
 	case 'guardaryeditar':
 		if (empty($id)){
@@ -23,7 +30,7 @@ switch ($_GET["op"]){
 			echo $rspta ? "Libro registrado correctamente, si lo requiere agregue mas autores" : "Libro no se pudo registrar";
 		}
 		else {
-			$rspta=$libro->editar($id,$descripcion);
+			$rspta=$libro->editar($id,$isbn,$titulo,$publicacion,$edicion,$cantidad,$precio,$cat,$edi,$aut,$tip);
 			echo $rspta ? "Libro actualizado" : "Libro no se pudo actualizar";
 		}
 	break;
@@ -61,8 +68,7 @@ switch ($_GET["op"]){
 
  		break;
 	break;
-    
-
+         
 	case 'listar':
 		$rspta=$libro->listar();
  		//Vamos a declarar un array

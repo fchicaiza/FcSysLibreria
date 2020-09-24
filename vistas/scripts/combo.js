@@ -105,6 +105,7 @@ function guardaryeditar(e)
             } else {
                 bootbox.alert(datos);
                 mostrarform(false);
+                $('#divtabla').load('tablaautores.php');
                 tabla.ajax.reload();
             }
 
