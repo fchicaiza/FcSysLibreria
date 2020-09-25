@@ -152,7 +152,7 @@ function desactivar(id)
 //Función para activar registros
 function activar(id)
 {
-	bootbox.confirm("¿Está Seguro de activar la Categoría?", function(result){
+	bootbox.confirm("¿Está Seguro de activar la el Libro?", function(result){
 		if(result)
         {
         	$.post("../ajax/libro.php?op=activar", {id : id}, function(e){
@@ -165,7 +165,7 @@ function activar(id)
 
 function eliminar(id){
     $.post("../ajax/libro.php?op=eliminar", {id : id}, function(e){
-        		bootbox.alert("Autor eliminado exitosamente");
+        		bootbox.alert("Libro eliminado exitosamente");
 	            tabla.ajax.reload();
         	});	
 }
