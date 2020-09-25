@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sistema | Biblioteca</title>
+    <title>ADVentas | www.incanatoit.com</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -32,11 +32,11 @@
         <p class="login-box-msg">Ingrese sus datos de Acceso</p>
         <form id="frmAcceso" method="post">
           <div class="form-group has-feedback">
-              <input type="text" class="form-control" id="logina" placeholder="Usuario">
+              <input type="text" class="form-control" name="logina" id="logina" placeholder="Usuario">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-              <input type="password" class="form-control" id="clavea" placeholder="Clave">
+              <input type="password" class="form-control" name="clavea" id="clavea" placeholder="Clave">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
@@ -70,3 +70,4 @@
 
   </body>
 </html>
+
