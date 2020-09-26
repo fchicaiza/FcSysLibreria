@@ -90,6 +90,7 @@ switch ($_GET["op"]){
 	        //Declaramos las variables de sesión
 	        $_SESSION['id']=$fetch->id;
 	        $_SESSION['dni']=$fetch->dni;
+                $_SESSION['nombre']=$fetch->nombre;
 	        $_SESSION['user']=$fetch->user;
 
 	    }
@@ -102,7 +103,8 @@ switch ($_GET["op"]){
         //Destruìmos la sesión
         session_destroy();
         //Redireccionamos al login
-        header("Location: ../vistas/login.html");
+  
+        header("Location: login.html");
 
 	break;
 }

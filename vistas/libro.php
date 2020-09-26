@@ -1,4 +1,14 @@
-<?php 
+<?php
+//Activamos el almacenamiento en el buffer
+ob_start();
+session_start();
+
+if (isset($_SESSION["id"]))
+{
+  header("Location: login.html");
+}
+else
+{
 require 'header.php';
 ?>
 <!-- Content Wrapper. Contains page content -->
@@ -166,6 +176,12 @@ require 'header.php';
     </div><!-- /.content-wrapper -->
 <!--Fin-Contenido-->
 <?php
+}
+
 require 'footer.php';
 ?>
+
 <script type="text/javascript" src="scripts/libro.js"></script>
+<?php 
+ob_end_flush();
+?>

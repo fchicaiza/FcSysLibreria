@@ -70,7 +70,7 @@
                   <li class="user-footer">
                     
                     <div class="pull-right">
-                        <a href="../ajax/usuario.php?op=salir" class="btn btn-default btn-flat">Cerrar</a>
+                        <a href="cerrar.php" class="btn btn-default btn-flat">Cerrar</a>
                     </div>
                   </li>
                 </ul>
@@ -100,7 +100,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href=""><i class="fa fa-circle-o"></i> Listar</a></li>
+                  <li><a href="usuario.php"><i class="fa fa-circle-o"></i> Listar</a></li>
               </ul>
             </li>
             

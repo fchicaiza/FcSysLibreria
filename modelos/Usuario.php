@@ -13,7 +13,7 @@ Class Usuario
 	//Implementamos un método para insertar registros
 	public function insertar($dni,$nombre,$user,$clave,$rol)
 	{
-		$sql="INSERT INTO fc_tbl_usuario (nombre,tipo_documento,num_documento,direccion,telefono,email,cargo,login,clave,imagen,condicion)
+		$sql="INSERT INTO fc_tbl_usuario (dni_usu,nom_usu,usu_usu,pass_usu,id_rol, est_usu)
 		VALUES ('$dni','$nombre','$user','$clave','$rol','A')";
 		return ejecutarConsulta($sql);
 

@@ -1,5 +1,5 @@
 <?php
 header("Status: 301 Moved Permanently");
-header("Location:../vistas/escritorio.php");
+header("Location:vistas/login.html");
 exit;
 ?>

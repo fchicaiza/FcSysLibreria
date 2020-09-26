@@ -8,7 +8,7 @@ function init(){
 	$("#formulario").on("submit",function(e)
 	{
 		guardaryeditar(e);	
-	})
+	});
 
 }
 
@@ -129,7 +129,7 @@ function desactivar(id)
 	            tabla.ajax.reload();
         	});	
         }
-	})
+	});
 }
 
 //Función para activar registros
@@ -143,7 +143,7 @@ function activar(idusuario)
 	            tabla.ajax.reload();
         	});	
         }
-	})
+	});
 }
 
 init();
