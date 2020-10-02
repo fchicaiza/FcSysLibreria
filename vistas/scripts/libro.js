@@ -99,7 +99,7 @@ function guardaryeditar(e)
 	          tabla.ajax.reload();
 	    }
 
-	})
+	});
         
 	limpiar();
 }
@@ -144,9 +144,9 @@ function desactivar(id)
         	$.post("../ajax/libro.php?op=desactivar", {id : id}, function(e){
         		bootbox.alert(e);
 	            tabla.ajax.reload();
-        	})	
+        	});	
         }
-	})
+	});
 }
 
 //Función para activar registros
